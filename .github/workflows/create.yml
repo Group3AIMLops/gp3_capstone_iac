@@ -1,0 +1,71 @@
+name: Create_Infrastructure
+
+on:
+  push:
+    branches:
+      - main
+    #paths:
+     # - 'iac_files/**'  # Adjust the path to match your Terraform files directory
+  #pull_request:
+    #paths:
+      #- 'iac_files/**'
+
+jobs:
+  terraform: #if: "contains(github.event.head_commit.message, 'Create Infra')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check commit message
+        id: check_commit_message
+        run: echo ::set-output name=contains_initiate_infra::$(echo "${{ github.event.head_commit.message }}" | grep -c 'Create Infra')
+
+
+      - name: Setup Terraform
+        if: steps.check_commit_message.outputs.contains_initiate_infra == '1'
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.0
+
+      - name: Configure AWS credentials
+        if: steps.check_commit_message.outputs.contains_initiate_infra == '1'
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Checking path and moving to correct folder 
+        run: |
+          pwd
+          ls -lrth
+          cd iac_files
+          ls -lrth
+
+      - name: Initialize Terraform
+        if: steps.check_commit_message.outputs.contains_initiate_infra == '1'
+        run: |
+          ls -lrth
+          cd iac_files
+          pwd
+          terraform init
+
+      - name: Validate Terraform configuration
+        if: steps.check_commit_message.outputs.contains_initiate_infra == '1'
+        run: |
+          cd iac_files
+          ls -lrth
+          terraform validate
+
+      #- name: Terraform plan changes
+      #  if: steps.check_commit_message.outputs.contains_initiate_infra == '1'
+      #  run: terraform plan out=tfplan
+
+      - name: Apply Terraform changes
+        if: steps.check_commit_message.outputs.contains_initiate_infra == '1'
+        run: |
+          cd iac_files
+          ls -lrth 
+          terraform apply -auto-approve # tfplan
