@@ -23,6 +23,12 @@ tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
 
+
+Install Kubectl:
+
+https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
+
+
 ```
 
 # Create a ```KUBECONFIG``` for ```kubectl```
