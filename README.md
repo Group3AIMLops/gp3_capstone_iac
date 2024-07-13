@@ -62,3 +62,10 @@ $ kubectl label namespace default istio-injection=enabled
 $ istioctl analyze
 
 ```
+
+### IAM Policies required
+
+```
+CloudFormation
+
+```
