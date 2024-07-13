@@ -1,9 +1,9 @@
 terraform{
     backend "s3" {
-        bucket = "group3-terraform-state-bucket"
-        key = "chatbot/terraform.tfstate"
-        region = "us-east-1"
-        dynamodb_table = "terraform-locks"
+        bucket = "gp3-terraform-state-bucket"
+        key = "prod/terraform.tfstate"
+        region = "us-east-2"
+        dynamodb_table = "gp3-terraform-locks"
         encrypt        = true
     }
 }

@@ -8,21 +8,21 @@
 variable "cluster_name" {
   type        = string
   description = "Name of the cluster"
-  default     = "demo-eks"
+  default     = "gp3-demo-eks"
 }
 
 # KK Playground. Cluster role must be called 'eksClusterRole'
 variable "cluster_role_name" {
   type        = string
   description = "Name of the cluster role"
-  default     = "eksClusterRole"
+  default     = "gp3-eksClusterRole"
 }
 
 # KK Playground. Node role must be called 'eks-demo-node'
 variable "node_role_name" {
   type        = string
   description = "Name of node role"
-  default     = "eks-demo-node"
+  default     = "gp3-eks-demo-node"
 }
 
 variable "node_group_desired_capacity" {

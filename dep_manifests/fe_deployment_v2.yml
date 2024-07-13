@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot-frontend-deployment-v2
+  labels:
+    app: chatbot-frontend
+    version: v2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chatbot-frontend
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: chatbot-frontend
+        version: v2
+    spec:
+      containers:
+        - name: chatbot-frontend
+          image: sumanthegdedocker/chatbot_frontend:added_icon   # Image with changed tag
+          ports:
+            - containerPort: 8501
+          env:
+            - name: use_sql
+              value: "False"
+            - name: user
+              value: "root"
+            - name: password
+              value: "root"
+            - name: host
+              value: "127.0.0.1"
+            - name: port
+              value: "3306"
+            - name: database
+              value: "chatbot"
+            - name: backend_ip
+              value: "http://chatbot-backend-service"
+            - name: backend_port
+              value: "8001"
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "2"
+        searches:
+          - default.svc.cluster.local
+        nameservers:
+          - 8.8.8.8
+          - 8.8.4.4
+

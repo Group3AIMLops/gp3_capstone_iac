@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gp3-kiali-loadbalancer
+  namespace: istio-system
+spec:
+  type: LoadBalancer
+  selector:
+    app: kiali  # Replace with appropriate selector matching your Kiali deployment
+  ports:
+    - protocol: TCP
+      port: 80    # Port on the LoadBalancer
+      targetPort: 20001  # Port on the Kiali ClusterIP service.
+ 
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gp3-grafana-loadbalancer
+  namespace: istio-system
+spec:
+  type: LoadBalancer 
+  selector:
+    app.kubernetes.io/name: grafana  # Replace with appropriate selector matching your Kiali deployment
+  ports:
+    - protocol: TCP
+      port: 80    # Port on the LoadBalancer
+      name: http
+      targetPort: 3000  # Port on the Kiali ClusterIP service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gp3-prometheus-loadbalancer
+  namespace: istio-system
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: prometheus  # Replace with appropriate selector matching your Kiali deployment
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80    # Port on the LoadBalancer
+      targetPort: 9090  # Port on the Kiali ClusterIP service

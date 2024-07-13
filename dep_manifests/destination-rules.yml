@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: gp3-chatbot-destinationrule
+spec:
+  host: chatbot-frontend-service  # Name of your Kubernetes service
+  subsets:
+  - name: v1
+    labels:
+      version: v1  # Label matching your v1 deployment
+  - name: v2
+    labels:
+      version: v2  # Label matching your v2 deployment
