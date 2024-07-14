@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: chatbot-backend
-          image: sumanthegdedocker/chatbot_backend:latest
+          image: sumanthegdedocker/chatbot_backend_gpu:latest
           ports:
             - containerPort: 8001
 ---
