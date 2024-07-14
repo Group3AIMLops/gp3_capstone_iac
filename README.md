@@ -1,13 +1,17 @@
-# gp3_capstone_iac
-This project is created to spin up and destroy the infrastructure created 
+<!-- ABOUT THE PROJECT -->
+## About The Project
+This repository is a backend part of Customer Conversational Intelligence Platform Powered by an LLM Agent.This project is created to spin up and destroy the infrastructure created 
 
 
-# Pre-requisites: Below resources should be present in AWS account
-### S3 bucket with name: ```group3-terraform-state-bucket```
-### DynamoDB table name: ```terraform-locks``` with Hash key as ```LockID```
+
+## Pre-requisites: 
+Below resources should be present in AWS account
+
+S3 bucket with name: ```group3-terraform-state-bucket```
+DynamoDB table name: ```terraform-locks``` with Hash key as ```LockID```
 
 
-# Install Eksctl
+## Install Eksctl
 
 ```
 # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
@@ -31,14 +35,16 @@ https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 
 ```
 
-# Create a ```KUBECONFIG``` for ```kubectl```
+## Setting up kubectl
+
+ Create a ```KUBECONFIG``` for ```kubectl```
 
 ```aws eks update-kubeconfig --region us-east-2 --name gp3-demo-eks```
 
 
-# Download Istio:
+## Download Istio:
 
-### Downloading and setting Istio Path:
+Downloading and setting Istio Path:
 ```
 Reference: https://istio.io/latest/docs/setup/getting-started/
 
@@ -50,7 +56,7 @@ $ export PATH=$PWD/bin:$PATH
 
 ```
 
-### Installing Istio
+## Installing Istio
 
 ```
 Reference: https://istio.io/latest/docs/setup/getting-started/
@@ -69,9 +75,19 @@ $ istioctl analyze
 
 ```
 
-### IAM Policies required
+## IAM Policies required
 
 ```
 CloudFormation
 
 ```
+
+## Other related repos
+
+you can checkout backend part of this project here 
+
+[frontend repo][frontend-url], [backend repo][backend-url]
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[frontend-url]: https://github.com/Group3AIMLops/ollama_chatbot_frontend
+[backend-url]: https://github.com/Group3AIMLops/ollama_chatbot_backend

@@ -3,7 +3,7 @@ name: Create_Infrastructure
 on:
   push:
     branches:
-      - main
+      - disabled
     #paths:
      # - 'iac_files/**'  # Adjust the path to match your Terraform files directory
   #pull_request:
