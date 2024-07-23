@@ -3,7 +3,7 @@ name: Destroy_Infrastructure
 on:
   push:
     branches:
-      - disabled
+      - main
     #paths:
      # - 'iac_files/**'  # Adjust the path to match your Terraform files directory
   #pull_request:

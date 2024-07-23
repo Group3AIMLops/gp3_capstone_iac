@@ -75,10 +75,31 @@ $ istioctl analyze
 
 ```
 
-## IAM Policies required
+### IAM Policies required
 
 ```
-CloudFormation
+AWSCloudFormationFullAccess
+AmazonEC2FullAccess
+AmazonDynamoDBFullAccess
+AmazonEKSClusterPolicy
+AmazonRoute53DomainsReadOnlyAccess
+AmazonSSMFullAccess
+AmazonS3FullAccess
+IAMFullAccess
+EksCluster : Custom Policy
+
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": "eks:*",
+			"Resource": "*"
+		}
+	]
+}
+
 
 ```
 
