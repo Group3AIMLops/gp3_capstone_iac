@@ -7,8 +7,8 @@ This repository is a backend part of Customer Conversational Intelligence Platfo
 ## Pre-requisites: 
 Below resources should be present in AWS account
 
-S3 bucket with name: ```group3-terraform-state-bucket```
-DynamoDB table name: ```terraform-locks``` with Hash key as ```LockID```
+S3 bucket with name: ```bsuite-terraform-state-bucket```
+DynamoDB table name: ```bsuite-terraform-locks``` with Hash key as ```LockID```
 
 
 ## Install Eksctl
