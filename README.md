@@ -111,4 +111,4 @@ you can checkout backend part of this project here
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [frontend-url]: https://github.com/Group3AIMLops/ollama_chatbot_frontend
-[backend-url]: https://github.com/Group3AIMLops/ollama_chatbot_backend
+[backend-url]: https://github.com/Group3AIMLops/ollama_chatbot_backend Need to change
